@@ -1,0 +1,36 @@
+#include<stdio.h> 
+#include<conio.h> 
+#include<graphics.h> 
+void main() 
+{ 
+ int x1,y1,x2,y2,dx,dy,d,i,gd,gm,x,y; 
+ printf("Enter endpoint x1,y1"); 
+ scanf("%d%d",&x1,&y1); 
+ printf("Enter endpoint x2,y2"); 
+ scanf("%d%d",&x2,&y2); 
+ dx=(x2-x1); 
+ dy=(y2-y1); 
+ d=2*dy-dx; 
+ i=1; 
+ x=x1; 
+ y=y1; 
+ gd=DETECT; 
+ initgraph(&gd,&gm,"c:\\turboc3\\bgi"); 
+ while(i<=dx) 
+ { 
+ putpixel(x,y,4); 
+ if(d<0) 
+ { 
+ x=x+1; 
+ d=d+2*dy; 
+ } 
+ else 
+ { 
+ x=x+1; 
+ y=y+1; 
+ d=d+2*dy-2*dx; 
+ } 
+ i++; 
+ } 
+getch(); 
+}
