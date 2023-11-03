@@ -1,0 +1,59 @@
+MID POINT ELLIPSE: 
+#include<stdio.h> 
+#include<conio.h> 
+#include<graphics.h> 
+#include<math.h> 
+void main() 
+{ 
+ float x,y,a,b,dx,dy,p1,p2; 
+ int gd,gm; 
+ printf("Enter the value of a & b: "); 
+ scanf("%f %f",&a,&b); 
+ x=0; 
+ y=b; 
+ p1=(b*b)-(a*a*b)+(a*a/4); 
+ dx=2*b*b*x; 
+ dy=2*a*a*y; 
+ gd=DETECT; 
+ initgraph(&gd,&gm,"c:\\turboc3\\bgi"); 
+ while(dy>dx) 
+ { 
+ putpixel(x+200,y+200,4); 
+ putpixel(-x+200,y+200,4); 
+ putpixel(x+200,-y+200,4); 
+ putpixel(-x+200,-y+200,4); 
+ if(p1<0) 
+ { 
+ x=x+1; 
+ p1=p1+2*b*b*x+b*b; 
+ } 
+ else 
+ { 
+ x=x+1; 
+ y=y-1; 
+ p1=p1+2*b*b*x-2*a*a*y; 
+ } 
+ dy=2*a*a*y; 
+ dx=2*b*b*x; 
+ } 
+ p2=((x+0.5)*(x+0.5)*b*b)+((y-1)*(y-1)*a*a)-(a*a*b*b); 
+ while(y>0) 
+ { 
+ putpixel(x+200,y+200,4); 
+ putpixel(-x+200,y+200,4); 
+ putpixel(x+200,-y+200,4); 
+ putpixel(-x+200,-y+200,4); 
+ if(p2<0) 
+ { 
+ y=y-1; 
+ x=x+1; 
+ p2=p2+(2*b*b*x)-(2*a*a*y)+(a*a); 
+ } 
+ else 
+ { 
+ y=y-1; 
+ p2=p2-(2*a*a*y)+(a*a); 
+ } 
+ } 
+ getch(); 
+} 
