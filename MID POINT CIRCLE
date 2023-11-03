@@ -1,0 +1,38 @@
+MID POINT CIRCLE 
+#include<stdio.h> 
+#include<conio.h> 
+#include<graphics.h> 
+void main() 
+{ 
+ int r,x,y,d,gd,gm; 
+ printf("Enter radius"); 
+ scanf("%d",&r); 
+ gd=DETECT; 
+ initgraph(&gd,&gm,"c:\\turboc3\\bgi"); 
+ d=1-r; 
+ x=r; 
+ y=0; 
+ while(x>=y) 
+ { 
+ putpixel(x+100,y+100,4); 
+ putpixel(x+100,-y+100,4); 
+ putpixel(-x+100,y+100,4); 
+ putpixel(-x+100,-y+100,4); 
+ putpixel(y+100,x+100,4); 
+ putpixel(y+100,-x+100,4); 
+ putpixel(-y+100,x+100,4); 
+ putpixel(-y+100,-x+100,4); 
+ if(d<0) 
+ { 
+ d=d+2*y+3; 
+ y=y+1; 
+ } 
+ else 
+ { 
+ d=d+2*y-2*x+5; 
+ y=y+1; 
+ x=x-1; 
+ } 
+ } 
+getch(); 
+}
