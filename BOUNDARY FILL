@@ -1,0 +1,26 @@
+
+#include<stdio.h> 
+#include<conio.h> 
+#include<graphics.h> 
+#include<dos.h> 
+void boundary_fill(int x,int y,int boundary_col,int new_col) 
+{ 
+ if(getpixel(x,y)!=boundary_col && getpixel(x,y)!=new_col) 
+ { 
+ delay(100); 
+ putpixel(x,y,new_col); 
+ boundary_fill(x+1,y,boundary_col,new_col); 
+ boundary_fill(x-1,y,boundary_col,new_col); 
+ boundary_fill(x,y+1,boundary_col,new_col); 
+ boundary_fill(x,y-1,boundary_col,new_col); 
+ } 
+} 
+void main() 
+{ 
+ int gd,gm; 
+ gd=DETECT; 
+ initgraph(&gd,&gm,"C:\\turboc3\\bgi"); 
+circle(100,100,20); 
+boundary_fill(110,110,15,4); 
+ getch(); 
+} 
