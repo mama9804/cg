@@ -1,0 +1,40 @@
+3D TRANSFORMATION: 
+#include<stdio.h> 
+#include<conio.h> 
+#include<math.h> 
+#include<graphics.h> 
+void main() 
+{ 
+int gd,gm; 
+float x1,y1,x2,y2,x3,y3,x4,y4,z; 
+gd=DETECT; 
+initgraph(&gd,&gm,"c:\\turboc3\\bgi"); 
+//translation 
+setfillstyle(EMPTY_FILL,4); 
+bar3d(100,100,120,120,20,0); 
+ getch(); 
+bar3d(150,130,170,150,20,1); 
+//scaling 
+getch(); 
+cleardevice(); 
+ bar3d(100,100,120,120,20,1); 
+ getch(); 
+ bar3d(100*0.5,100*0.5,120*0.5,120*0.5,20*0.5,1); 
+x1=100; 
+y1=100; 
+x2=120; 
+y2=120; 
+z=10; 
+getch(); 
+cleardevice(); 
+bar3d(x1,y1,x2,y2,z,1); 
+x3=x1*cos(30*3.14/180)-y1*sin(30*3.14/180); 
+y3=x1*sin(30*3.14/180)+y1*cos(30*3.14/180); 
+x4=x2*cos(30*3.14/180)-y2*sin(30*3.14/180); 
+y4=x2*sin(30*3.14/180)+y2*cos(30*3.14/180); 
+printf("%f %f %f %f",x3,y3,x4,y4); 
+getch(); 
+//cleardevice(); 
+bar3d(x3,y3,x4,y4,z,1); 
+getch(); 
+} 
